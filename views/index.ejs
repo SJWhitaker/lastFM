@@ -1,0 +1,11 @@
+<% include partials/header %>
+
+<h1>Top Played Artists This Week</h1>
+
+<% parseData["artists"]["artist"].forEach(function(artist) { %>
+   <div class="mould">
+    <li> <img src=<%=artist["image"][4]["#text"]%>> <h4><%=artist["name"] %> </h4> <h4> <%=artist["playcount"]%> </h4> </li>
+	</div>
+<% }); %>
+
+<% include partials/footer %>

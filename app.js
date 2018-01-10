@@ -2,11 +2,15 @@ const express = require('express');
 const app = express();
 const request = require('request');
 
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
+
+
 app.get('/', function(req, res) {
     request('http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=e3918ef5cd467ae4026dfed695a1317c&format=json', function (error, response, body) {
       if(!error && response.statusCode == 200 ) {
       	   let parseData = JSON.parse(body);
-          res.send(parseData);
+          res.render('index', {parseData: parseData});
           console.log('response');
     }
   });

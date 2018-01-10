@@ -1,0 +1,25 @@
+h1 {
+	color: blue;
+}
+
+li {
+	list-style: none;
+}
+
+.mould {
+	display: flex;
+	justify-content: center;
+}
+
+.mould img {
+    border-radius: 50%;
+    position: relative;
+}
+
+h1 {
+	text-align: center;
+}
+
+h4 {
+	text-align: center;
+}
