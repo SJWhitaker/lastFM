@@ -1,11 +1,26 @@
 <% include partials/header %>
 
-<h1>Top Played Artists This Week</h1>
+<h1>Top Played Artists</h1>
 
-<% parseData["artists"]["artist"].forEach(function(artist) { %>
+<% let data = parseData["artists"]["artist"];%>
+
+<!-- Sorts artist by playcount -->
+
+<% data.sort(function (a, b) { %>
+ <% return b.playcount - a.playcount;%>
+<% }); %>
+
+<!--  -->
+
+<% data.forEach(function(artist) { %>
+<% let playCount = Number (artist["playcount"]).toLocaleString();%>
+<% let artistImage = artist["image"][4]["#text"];%>
+<% let artistName = artist["name"];%>
    <div class="mould">
-    <li> <img src=<%=artist["image"][4]["#text"]%>> <h4><%=artist["name"] %> </h4> <h4> <%=artist["playcount"]%> </h4> </li>
+    <li> <img src=<%=artistImage%>> <h4><span id="artistName"><%=artistName %></span> <span id="artistPlayCount"><%=playCount%></span> </h4> </li>
 	</div>
 <% }); %>
+
+
 
 <% include partials/footer %>
